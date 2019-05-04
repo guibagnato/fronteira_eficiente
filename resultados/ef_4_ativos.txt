@@ -1,0 +1,32 @@
+data_inicio = datetime(2015, 1, 1)
+data_fim = datetime(2018, 12, 31)
+
+papeis = [
+    'ITUB3',
+    'BBDC4',
+    'PETR4',
+    'VALE3',
+]
+
+monte_carlo_simulations = 50000
+
+
+------ Monte Carlo Simulation ----------------
+ITUB3.sa: 0.637
+BBDC4.sa: 0.02
+PETR4.sa: 0.066
+VALE3.sa: 0.277
+Max Ret:  0.17038275108663825
+Max Vol:  0.2839855366262158
+Max Sharp:  0.5999698192760341
+----------------------------------------------
+
+------ Sharpe Ratio Minimize ----------------
+ITUB3.sa: 0.656
+BBDC4.sa: 0.0
+PETR4.sa: 0.07
+VALE3.sa: 0.274
+Expected Portfolio Return:  0.17037357839738124
+Expected Volatility:  0.2836291337170859
+Sharp Ratio:  0.6006913893666695
+---------------------------------------------
