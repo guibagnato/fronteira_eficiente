@@ -5,7 +5,6 @@ import pandas_datareader.data as web
 import numpy as np
 
 FATOR_ANUAL = 252
-PATH = 'dados/'
 CSV = '.csv'
 SA = '.sa'
 
@@ -21,9 +20,6 @@ class SerieHistorica:
         self._dados_brutos = None
 
         self.carrega_dados_brutos()
-
-    def __str__(self):
-        return "{} - {} - {}".format(self.papel, self.data_inicio, self.data_fim)
 
     @property
     def dados_brutos(self):
@@ -45,7 +41,8 @@ class SerieHistorica:
 
 
 class Carteira:
-
+    PATH = 'dados/'
+    
     def __init__(self, papeis, data_inicio=None, data_fim=None, arquivos=False):
         self.papeis = papeis
         self.data_inicio = data_inicio
@@ -69,10 +66,6 @@ class Carteira:
         return self._retornos
 
     @property
-    def retornos_avg(self):
-        return self._retornos_avg
-
-    @property
     def port_retorno(self):
         return self._port_retorno
 
@@ -84,10 +77,9 @@ class Carteira:
     def indice_sharp(self):
         return self._indice_sharp
 
-    @staticmethod
-    def nome_arquivo(nome):
+    def nome_arquivo(self, nome):
         nome = nome.replace(SA, '')
-        return PATH + nome.upper() + CSV
+        return self.PATH + nome.upper() + CSV
 
     def summary(self):
         print('Expected Portfolio Return: ', self.port_retorno)
@@ -96,9 +88,6 @@ class Carteira:
 
     def _trata_inputs(self):
         self.papeis = [papel + SA for papel in self.papeis]
-
-    def insere_retorno(self, retornos):
-        self._retornos = self._retornos.append(retornos, ignore_index=True)
 
     def filtra_retorno_por_data(self, inicio, fim):
         mask = (self._retornos_completos.index > inicio) & (self._retornos_completos.index <= fim)

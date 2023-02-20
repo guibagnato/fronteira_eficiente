@@ -41,7 +41,7 @@ class PortifolioOptimization:
         self.carteira.summary()
         print('---------------------------------------------')
 
-    def monte_carto_portifolios(self, num_ports=5000):
+    def monte_carlo_portifolios(self, num_ports=5000):
         self.all_weights = np.zeros((num_ports, self.num_papeis))
         self.ret_arr = np.zeros(num_ports)
         self.vol_arr = np.zeros(num_ports)
